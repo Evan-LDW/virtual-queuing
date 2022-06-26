@@ -1,70 +1,54 @@
-# Getting Started with Create React App
+# Virtual Queuing
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+1. 将设计稿划分组件层级
 
-## Available Scripts
+- App: render title and subtitle and signup form
+  - SignUpForm: render sign up form
+    - Input: render email input
+    - Input + PasswordToggle: render password input and show/hide icon
+    - Input + PasswordToggle: render confirm password input and show/hide icon
+- Input
+- PasswordVisibilityToggle
 
-In the project directory, you can run:
+2. 实现静态版本
 
-### `npm start`
+## 测试
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- 为自己所写的代码上线按预期运行增加信心，为自己所写的代码能够更加 RMR 增加信心
+- 测试是 Overhead，测试是累赘，说服自己，说服产品，我需要测试，同时测试只会加速开发而不会拖累开发
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 测试金字塔法则
 
-### `npm test`
+0% -> Manual Test -> Unit Test, Integration Test, UI Test, End 2 End Test, QA -> 100%
+Coverage -> 100% 80% , 20% , 10% , 1%的情况
+不仅是信心建立的过程，更是成本增加的过程
+你不能无限的建立信心，我认为应该没问题了
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Test Driven Development
 
-### `npm run build`
+Test -> Red (Fail Test) -> Behavior -> Red (Fail Test) -> Behavior -> ... -> Green (Pass Test) -> Development Done
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Over engineering
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Behavior Driven Development
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Behavior -> Test -> Red (Fail/NotEnough Test) - Test -> Red (Fail/NotEnough Test) -> ... Green (Pass and EnoughCoverage) -> Development Done
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- APP: render page for url
+  - SignUpPage
+  - QueueListPage
+    - SideMenu: render layout of UserInfo and Navigation and CurrentQueue and NextCustomerNote
+      - UserInfo: render layout of authenticated user information and DropdownMenu
+        - DropdownMenu: render toggle-able dropdown
+          - SignOut: render signout button
+      - Navigation
+        - ...
+      - CurrentQueue
+        - ...
+      - NextCustomerNote: render the first customer note
+        - ...
+    - Main
+      - Logo: render Logo
+      - QueueListTable
+        - ...
+- Logo

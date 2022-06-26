@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import SignUpPage from "./apps/SignUpPage";
+import QueueListPage from "./apps/QueueListPage";
+import { useEffect, useState } from "react";
 
-function App() {
+const App = () => {
+  const [pathname, setPathname] = useState(window.location.pathname)
+  const [authenticated, setAuthenticated] = useState(false)
+
+  useEffect(() => {
+    window.history.pushState(undefined, undefined, pathname)
+  }, [pathname])
+
+  const route = {
+    '/auth/sign-up': (<SignUpPage setPathname={setPathname} setAuthenticated={setAuthenticated} />),
+    '/': (<QueueListPage setPathname={setPathname} authenticated={authenticated} />),
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <button onClick={() => setPathname('/')}>/</button>
+      <button onClick={() => setPathname('/auth/sign-up')}>/auth/sign-up</button>
+      {route[pathname] || `${pathname} 404`}
+    </>
+  )
 }
 
 export default App;
